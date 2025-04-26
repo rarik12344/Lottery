@@ -1,12 +1,25 @@
 {
   "name": "Neon Lottery",
-  "icon": "https://i.ibb.co/NdV9qyFh/NEONLOTTERY.jpg",
-  "url": "https://neonlottery.netlify.app/",
   "description": "Daily ETH Lottery on Base Network",
-  "type": "miniapp",
-  "version": "1.0.0",
-  "permissions": ["identity", "transactions"],
-  "supported_standards": ["farcaster-2025"],
-  "chains": ["base"],
-  "orientation": "portrait"
+  "icon": "https://neonlottery.netlify.app/images/frame-icon.jpg",
+  "splash": {
+    "image": "https://neonlottery.netlify.app/images/social-preview.jpg",
+    "backgroundColor": "#0f0f1a"
+  },
+  "permissions": [
+    "identity",
+    "notifications",
+    "wallet"
+  ],
+  "frame": {
+    "title": "Neon Lottery",
+    "image": "https://neonlottery.netlify.app/images/frame-preview.jpg",
+    "buttons": [
+      {
+        "label": "🎫 Participate",
+        "action": "post_redirect"
+      }
+    ],
+    "post_url": "https://neonlottery.netlify.app/api/frame"
+  }
 }
