@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Neon Lottery | Daily ETH Lottery on Base</title>
     
-    <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.netlify.app https://cdn.jsdelivr.net https://*.warpcast.com; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; connect-src *; img-src * data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com">
+    <!-- Updated Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' https://*.netlify.app;
+        script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+        img-src * data:;
+        connect-src *;
+        frame-src https://*.warpcast.com;
+    ">
     
     <!-- Primary Meta Tags -->
     <meta name="title" content="Neon Lottery | Daily ETH Lottery on Base">
@@ -39,21 +47,12 @@
     <meta property="fc:frame:button:1:action" content="post_redirect">
     <meta property="fc:frame:post_url" content="https://neonlottery.netlify.app/api/frame">
     
-    <!-- Farcaster Mini App Manifest References -->
-    <link rel="manifest" href="/.well-known/farcaster.json">
-    
     <!-- Preload image for better performance -->
     <link rel="preload" href="https://i.ibb.co/NdV9qyFh/NEONLOTTERY.jpg" as="image">
     
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Warpcast MiniApp SDK (2025 version) -->
-    <script src="https://unpkg.com/@warpcast/miniapp@2.5.0/dist/miniapp.umd.js"></script>
-    
-    <!-- Web3.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
     
     <style>
         :root {
@@ -663,7 +662,14 @@
         </div>
     </div>
 
-    <script>
+    <!-- Warpcast MiniApp SDK (2025 version) -->
+    <script src="https://unpkg.com/@warpcast/miniapp@2.5.0/dist/miniapp.umd.js"></script>
+    
+    <!-- Web3.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+    
+    <!-- Main Application Script -->
+    <script nonce="2726c7f26c">
         // Contract details
         const CONTRACT_ADDRESS = "0x6927648b3114B8B54FA5476Ec3BC3A52f1ab513B";
         const CONTRACT_ABI = [{"inputs":[{"internalType":"uint256","name":"_initialTicketPriceETH","type":"uint256"},{"internalType":"address","name":"_feeWallet","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"roundIndex","type":"uint256"}],"name":"RoundCanceled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"roundIndex","type":"uint256"},{"indexed":false,"internalType":"address","name":"winner","type":"address"},{"indexed":false,"internalType":"uint256","name":"prize","type":"uint256"}],"name":"RoundEnded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"roundIndex","type":"uint256"}],"name":"RoundStarted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"buyer","type":"address"},{"indexed":false,"internalType":"uint256","name":"roundIndex","type":"uint256"},{"indexed":false,"internalType":"uint32","name":"tickets","type":"uint32"}],"name":"TicketsPurchased","type":"event"},{"inputs":[{"internalType":"uint32","name":"_tickets","type":"uint32"}],"name":"buyTickets","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"cancelRound","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"currentRoundIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"endRound","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"feePercent","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"feeWallet","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getCurrentRoundInfo","outputs":[{"internalType":"uint256","name":"startTime","type":"uint256"},{"internalType":"uint256","name":"endTime","type":"uint256"},{"internalType":"uint256","name":"prizePool","type":"uint256"},{"internalType":"uint256","name":"participantsCount","type":"uint256"},{"internalType":"bool","name":"active","type":"bool"},{"internalType":"bool","name":"canceled","type":"bool"},{"internalType":"address","name":"winner","type":"address"},{"internalType":"uint256","name":"prizeAmount","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"roundIndex","type":"uint256"},{"internalType":"uint256","name":"participantIndex","type":"uint256"}],"name":"getParticipantInfo","outputs":[{"internalType":"address","name":"wallet","type":"address"},{"internalType":"uint32","name":"tickets","type":"uint32"},{"internalType":"uint64","name":"ticketFrom","type":"uint64"},{"internalType":"uint64","name":"ticketTo","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"prizePoolPercent","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"rounds","outputs":[{"internalType":"uint256","name":"startTime","type":"uint256"},{"internalType":"uint256","name":"endTime","type":"uint256"},{"internalType":"bool","name":"isActive","type":"bool"},{"internalType":"bool","name":"isCanceled","type":"bool"},{"internalType":"uint256","name":"totalTickets","type":"uint256"},{"internalType":"uint256","name":"prizePool","type":"uint256"},{"internalType":"address","name":"winner","type":"address"},{"internalType":"uint256","name":"prizeAmount","type":"uint256"},{"internalType":"uint256","name":"participantsCount","type":"uint256"},{"internalType":"bytes32","name":"randomnessSeed","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_prizePercent","type":"uint256"},{"internalType":"uint256","name":"_feePercent","type":"uint256"}],"name":"setDistributionPercents","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_newWallet","type":"address"}],"name":"setFeeWallet","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_newPrice","type":"uint256"}],"name":"setTicketPrice","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"startRound","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"ticketPriceETH","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"stateMutability":"payable","type":"receive"}];
