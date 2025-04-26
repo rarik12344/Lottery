@@ -5,5 +5,8 @@
   "description": "Daily ETH Lottery on Base Network",
   "type": "miniapp",
   "version": "1.0.0",
-  "permissions": ["identity", "transactions"]
+  "permissions": ["identity", "transactions"],
+  "supported_standards": ["farcaster-2025"],
+  "chains": ["base"],
+  "orientation": "portrait"
 }
