@@ -2,13 +2,20 @@
   publish = "/"
   functions = "api"
 
-[[redirects]]
-  from = "/.well-known/farcaster.json"
-  to = "/farcaster.json"
-  status = 200
-
 [[headers]]
   for = "/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
     X-Frame-Options = "ALLOW-FROM https://warpcast.com"
+    Content-Security-Policy = "default-src 'self' https://*.netlify.app https://cdn.jsdelivr.net https://*.warpcast.com; script-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com; connect-src *; img-src * data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com"
+
+[[redirects]]
+  from = "/.well-known/farcaster.json"
+  to = "/farcaster.json"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/frame"
+  to = "/.netlify/functions/frame"
+  status = 200
