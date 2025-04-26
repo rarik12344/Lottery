@@ -1,0 +1,9 @@
+{
+  "name": "Neon Lottery",
+  "icon": "https://i.ibb.co/NdV9qyFh/NEONLOTTERY.jpg",
+  "url": "https://neonlottery.netlify.app/",
+  "description": "Daily ETH Lottery on Base Network",
+  "type": "miniapp",
+  "version": "1.0.0",
+  "permissions": ["identity", "transactions"]
+}
