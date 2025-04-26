@@ -1,0 +1,14 @@
+[build]
+  publish = "/"
+  functions = "api"
+
+[[redirects]]
+  from = "/.well-known/farcaster.json"
+  to = "/farcaster.json"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    X-Frame-Options = "ALLOW-FROM https://warpcast.com"
